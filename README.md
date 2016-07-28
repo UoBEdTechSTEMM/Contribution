@@ -1,5 +1,7 @@
 # Contribution guide :crystal_ball:
 
+[An example project](https://github.com/UoBEdTechSTEMM/MatrixTransforms)
+
 [STYLE GUIDE read before making a commit](https://github.com/feross/standard)
 
 [Some interactive tutorials](http://nodeschool.io/#workshoppers)
