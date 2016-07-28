@@ -8,10 +8,10 @@
 
 If you are using a computer where you do not have administrator access, create an account on [Cloud 9 IDE](https://c9.io/) which will give you access to a virtual machine with node.js and javascript editor that will run in the browser. You can then make a new workspace directly from a github repository where you can run `npm` and `standard`.
 
-To lint your code using Standard.JS and check that it conforms to the style guide you can use the "standard" node module. If you have node installed and are in the project directory you can set up standard by running the command:
+To lint your code using Standard.JS and check that it conforms to the style guide you can use the "standard" node module. To install this globally run:
 
 ```bash
-$ npm install
+$ npm install -g standard
 ```
 
 After that you can run the command ```standard``` in the root directory of the project and it will alert you to javascript formatting errors in any of the source files. You can *automagically* fix any errors by running.
@@ -20,23 +20,17 @@ After that you can run the command ```standard``` in the root directory of the p
 $ standard --fix
 ```
 
-If you get an error about `standard` not existing try this first:
-
-```bash
-$ npm install -g standard
-```
-
 Programming guide:
 ------------------
 
-If you enter in a new function, add it to the ```mt``` namespace e.g. if you want to add the ```clamp``` function to the ```mt``` namespace write something like this:
+If you enter in a new function, add it to the ```exampleNS``` namespace e.g. if you want to add the ```clamp``` function to the ```exampleNS``` namespace write something like this:
 
 ```javascript
-var matrix = {};
+var exampleNamespace = {};
 
-(function (mt) {
+(function (exampleNS) {
   ...
-  mt.clamp = function (x, min, max) {
+  exampleNS.clamp = function (x, min, max) {
     if (x <= min) {
       return min
     } else if (x > min && x < max) {
@@ -46,40 +40,40 @@ var matrix = {};
     }
   }
   ...
-})(matrix)
+})(exampleNamespace)
 ```
 
 You can then call this from inside the namespace like this:
 
 ```javascript
 ...
-(function (mt) {
+(function (exampleNS) {
   ...
-  mt.somefunc = function  () {
-    var y = mt.clamp(15, 10, 20)
+  exampleNS.somefunc = function () {
+    var y = exampleNS.clamp(15, 10, 20)
   }
   ...
-})(matrix)
+})(exampleNamespace)
 ```
 
 and from other scripts like this:
 
 ```javascript
-var y = matrix.clamp(15, 10, 20)
+var y = exampleNamespace.clamp(15, 10, 20)
 ```
 
 If you want to declare a namespace-local "private" variable or function, then declare it as normal but within the namespace:
 
 ```javascript
 ...
-(function (mt) {
+(function (exampleNS) {
   var namespaceLocal = 5
   ...
-  mt.addOne = function () {
+  exampleNS.addOne = function () {
     return namespaceLocal + 1
   }
   ...
-})(matrix)
+})(exampleNamespace)
 
 console.log(namespaceLocal === undefined); // true
 ```
@@ -88,20 +82,20 @@ Create objects as normal:
 
 ```javascript
 ...
-(function (mt) {
+(function (exampleNS) {
   ...
-  mt.Vector3 = function (x, y, z) {
+  exampleNS.Vector3 = function (x, y, z) {
     this.x = x
     this.y = y
     this.z = z
   }
 
-  mt.Vector3.prototype.getLength = function () {
+  exampleNS.Vector3.prototype.getLength = function () {
     return Math.sqrt(Math.pow(this.x, 2), Math.pow(this.y, 2), Math.pow(this.z, 2))
   }
   ...
-})(matrix)
+})(exampleNamespace)
 
-var vector = new matrix.Vector3(3, 4, 5)
+var vector = new exampleNamespace.Vector3(3, 4, 5)
 console.log(vector.getLength()) // 7.07...
 ```
