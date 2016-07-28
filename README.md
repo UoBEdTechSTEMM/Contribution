@@ -6,9 +6,11 @@
 
 [Install node.js](https://nodejs.org/en/)
 
-If you are using a computer where you do not have administrator access, create an account on [Cloud 9 IDE](https://c9.io/) which will give you access to a virtual machine with node.js and javascript editor that will run in the browser. You can then make a new workspace directly from a github repository where you can run `npm` and `standard`.
+*To run a HTML page remotely* (to share with other people) use [rawgit](https://rawgit.com/) and then paste in the link to your `index.html`. This will work as long as you aren't running any server-side code, so if you're using just client-side javascript you'll be fine! :smile:
 
-To lint your code using Standard.JS and check that it conforms to the style guide you can use the "standard" node module. To install this globally run:
+*If you are using a computer where you do not have administrator access*, login using your GitHub account on [Cloud 9 IDE](https://c9.io/) which will give you access to a virtual machine with node.js and a javascript editor in your browser. You can then make a new workspace directly from a github repository where you can run `npm`, `standard`, `git`, and all of your favourite GNU/Ubuntu commands including `apt-get`, `ls`, and `cat` etc.
+
+*To lint your code using Standard.JS and check that it conforms to the style guide* you can use the "standard" node module. To install this globally run:
 
 ```bash
 $ npm install -g standard
@@ -23,7 +25,7 @@ $ standard --fix
 Programming guide:
 ------------------
 
-If you enter in a new function, add it to the ```exampleNS``` namespace e.g. if you want to add the ```clamp``` function to the ```exampleNS``` namespace write something like this:
+If you enter a new function into an existing project, add it to the ```exampleNS``` namespace e.g. if you want to add the ```clamp``` function to the ```exampleNS``` namespace write something like this:
 
 ```javascript
 var exampleNamespace = {};
